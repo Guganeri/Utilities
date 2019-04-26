@@ -15,7 +15,6 @@ if so == 'Windows':
     print('Host-IP:', myip)
 
     #Portas OPEN
-    print('Entrou')
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('target ', target)
@@ -31,8 +30,6 @@ if so == 'Windows':
         else:
             print('Port', x, 'Closed')
 
-
-    print('Saiu')
     #Verificação de portas em funcionamento
 
 
