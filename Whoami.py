@@ -21,6 +21,7 @@ I8,        8        ,8I  88                                                     
 
 #Verificação do SO
 so = platform.system()
+
 #Verificação do IP
 myip = socket.gethostbyname(socket.gethostname())
 
@@ -89,9 +90,3 @@ else:
     print("Desconhecido")
     print(platform.node())
     print(platform.machine())
-
-
-
-
-
-
