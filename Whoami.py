@@ -18,7 +18,7 @@ if so == 'Windows':
 
     for ports in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        #if s.connect_ex((sys.argv[1], ports)) == 0:
+        #if s.connect_ex((sys.argv[myip], ports)) == 0:
         #    print("Porta", ports, "Aberta")
         #    s.close()
 
@@ -34,7 +34,7 @@ elif so == 'Linux':
 
     for ports in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        if s.connect_ex((sys.argv[1], ports)) == 0:
+        if s.connect_ex((sys.argv[myip], ports)) == 0:
             print("Porta", ports, "Aberta")
             s.close()
 else:
