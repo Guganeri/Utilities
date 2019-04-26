@@ -18,13 +18,15 @@ if so == 'Windows':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('Target ', target)
+
     def pscan(port):
         try:
             s.connect((target, port))
             return True
         except:
-            return False
-    for x in range(65536):
+            return None
+
+    for x in range(0, 65536):
         if pscan(x):
             print('Port', x, 'is open')
         #else:
