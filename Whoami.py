@@ -14,6 +14,7 @@ elif so == 'Linux':
     print('Nome do computador:',platform.node())
     print('Processador:',platform.machine())
     print('Versão:',platform.platform())
+    print('Distr: ',platform.linux_distribution())
 else:
     print("Desconhecido")
     print(platform.node())
