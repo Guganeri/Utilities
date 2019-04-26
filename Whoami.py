@@ -1,6 +1,5 @@
 import platform, socket, sys
 
-
 #Verificação do SO
 so = platform.system()
 #Verificação do IP
