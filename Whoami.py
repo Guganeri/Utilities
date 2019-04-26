@@ -56,8 +56,6 @@ if so == 'Windows':
 
     #Verificação de portas em funcionamento
 
-
-
 elif so == 'Linux':
     print("SO: Linux")
     print('HostName:', platform.node())
@@ -66,13 +64,27 @@ elif so == 'Linux':
     print('Version:', platform.platform())
     print('Adictional Inf: ', platform.linux_distribution())
 
-    #Verificação de portas em funcionamento
+    # Portas OPEN
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    target = myip
+    print('Target ', target)
 
-    for ports in range(1,65535):
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        if s.connect_ex((sys.argv[myip], ports)) == 0:
-            print("Porta", ports, "Aberta")
-            s.close()
+
+    def pscan(port):
+        try:
+            s.connect((target, port))
+            return True
+        except:
+            return None
+
+
+    for x in range(0, 65536):
+        if pscan(x):
+            print('Port', x, 'is open')
+        # else:
+        #    print('Port', x, 'Closed')
+    print('=-' * 50)
+
 else:
     print("Desconhecido")
     print(platform.node())
