@@ -1,4 +1,23 @@
+"""
+ [] Script for devops
+ [] Verificação de portas em uso e abertura de portas via linha de comando
+ [] Create by: Gustavo Neri
+"""
+
 import platform, socket, sys
+
+print ('''
+                                                                                       
+I8,        8        ,8I  88                                                        88  
+`8b       d8b       d8'  88                                                        ""  
+ "8,     ,8"8,     ,8"   88                                                            
+  Y8     8P Y8     8P    88,dPPYba,    ,adPPYba,   ,adPPYYba,  88,dPYba,,adPYba,   88  
+  `8b   d8' `8b   d8'    88P'    "8a  a8"     "8a  ""     `Y8  88P'   "88"    "8a  88  
+   `8a a8'   `8a a8'     88       88  8b       d8  ,adPPPPP88  88      88      88  88  
+    `8a8'     `8a8'      88       88  "8a,   ,a8"  88,    ,88  88      88      88  88  
+     `8'       `8'       88       88   `"YbbdP"'   `"8bbdP"Y8  88      88      88  88  
+                                                     
+''')
 
 #Verificação do SO
 so = platform.system()
@@ -6,6 +25,7 @@ so = platform.system()
 myip = socket.gethostbyname(socket.gethostname())
 
 if so == 'Windows':
+    print('=-' * 50)
     print("SO: Windows")
     print('HostName:', platform.node())
     #Arquiterura do processador
@@ -13,6 +33,7 @@ if so == 'Windows':
     print('Version:', platform.platform())
     print('Adictional Inf:', platform.win32_ver())
     print('Host-IP:', myip)
+    print('=-' *50)
 
     #Portas OPEN
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -31,6 +52,7 @@ if so == 'Windows':
             print('Port', x, 'is open')
         #else:
         #    print('Port', x, 'Closed')
+    print('=-' * 50)
 
     #Verificação de portas em funcionamento
 
