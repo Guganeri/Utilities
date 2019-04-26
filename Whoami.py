@@ -7,6 +7,8 @@ if so == 'Windows':
     print('Nome do computador:',platform.node())
     print('Processador:',platform.machine())
     print('Versão:',platform.platform())
+    print('#'*50)
+    print('Informações adicionais SO:',platform.win32_ver())
 elif so == 'Linux':
     print("Linux")
     print('Nome do computador:',platform.node())
