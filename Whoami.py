@@ -30,7 +30,7 @@ elif so == 'Linux':
     print('Version:', platform.platform())
     print('Adictional Inf: ', platform.linux_distribution())
 
-    # Verificação de portas em funcionamento
+    #Verificação de portas em funcionamento
 
     for ports in range(1,65535):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -42,7 +42,7 @@ else:
     print(platform.node())
     print(platform.machine())
 
-#Open Ports Windows SO
+
 
 
 
