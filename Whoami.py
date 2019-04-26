@@ -17,18 +17,18 @@ if so == 'Windows':
     #Portas OPEN
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
-    print('target ', target)
+    print('Target ', target)
     def pscan(port):
         try:
-            con = s.connect((target, port))
+            s.connect((target, port))
             return True
         except:
             return False
-    for x in range(50000):
+    for x in range(65536):
         if pscan(x):
             print('Port', x, 'is open')
-        else:
-            print('Port', x, 'Closed')
+        #else:
+        #    print('Port', x, 'Closed')
 
     #Verificação de portas em funcionamento
 
