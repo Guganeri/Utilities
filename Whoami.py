@@ -79,54 +79,7 @@ if so == 'Windows':
         print("Couldn't connect to server")
         sys.exit()
 
-    #Finish script for pythonforbeginners
     #Need optimized
-
-    #Ports OPEN
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    target = myip
-    print('Target ', target)
-
-    def pscan(port):
-        try:
-            s.connect((target, port))
-            return True
-        except:
-            return None
-
-    for x in range(0, 65536):
-        if pscan(x):
-            print('Port', x, 'is open')
-        #else:
-        #    print('Port', x, 'Closed')
-    print('=-' * 50)
-
-    #Script Import
-    #Nothing work
-    ip = myip
-
-    ports = []
-    count = 0
-
-    while count < 65000:
-        count += 1
-
-    for port in ports:
-        client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        client.bind((ip, port))
-        msg = 'hi'
-        client.sendto(msg.encode(), (ip, port))
-        data, address = client.recvfrom(1024)
-        # print("Recebida ->", str(data))
-
-        if data != None:
-            print(str(port) + " -> Port is opened")
-        else:
-            print(str(port) + " -> Port is closed")
-
-    print("Scan Finished")
-
-    #Verification ports
 
 elif so == 'Linux':
     print("SO: Linux")
