@@ -1,6 +1,6 @@
 """
  [] Script for devops
- [] Verificação de portas em uso e abertura de portas via linha de comando
+ [] Checking ports in use and opening ports via command line
  [] Create by: Gustavo Neri
 """
 
