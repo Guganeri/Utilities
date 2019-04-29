@@ -59,7 +59,7 @@ if so == 'Windows':
     # Notting work
     ip = myip
 
-    ports = 65000
+    ports: int = 65000
 
     for port in ports:
         client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -70,9 +70,9 @@ if so == 'Windows':
         # print("Recebida ->", str(data))
 
         if data != None:
-            print(int(port) + " -> Port is opened")
+            print(str(port) + " -> Port is opened")
         else:
-            print(int(port) + " -> Port is closed")
+            print(str(port) + " -> Port is closed")
 
     print("Scan Finished")
 
