@@ -1,11 +1,9 @@
+import platform, socket, sys
 """
  [] Script for devops
  [] Checking ports in use and opening ports via command line
  [] Create by: Gustavo Neri
 """
-
-import platform, socket, sys
-
 print ('''
                                                                                        
 I8,        8        ,8I  88                                                        88  
@@ -19,12 +17,13 @@ I8,        8        ,8I  88                                                     
                                                      
 ''')
 
-#Verificação do SO
+#Verification SO
 so = platform.system()
 
-#Verificação do IP
+#Verification IP
 myip = socket.gethostbyname(socket.gethostname())
 
+#Starting Utility
 if so == 'Windows':
     print('=-' * 50)
     print("SO: Windows")
@@ -36,7 +35,7 @@ if so == 'Windows':
     print('Host-IP:', myip)
     print('=-' *50)
 
-    #Portas OPEN
+    #Ports OPEN
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('Target ', target)
@@ -56,7 +55,7 @@ if so == 'Windows':
     print('=-' * 50)
 
     #Script Import
-    # Notting work
+    #Nothing work
     ip = myip
 
     ports = []
@@ -80,7 +79,7 @@ if so == 'Windows':
 
     print("Scan Finished")
 
-    #Verificação de portas em funcionamento
+    #Verification ports
 
 elif so == 'Linux':
     print("SO: Linux")
@@ -90,7 +89,7 @@ elif so == 'Linux':
     print('Version:', platform.platform())
     print('Adictional Inf: ', platform.linux_distribution())
 
-    # Portas OPEN
+    # Ports OPEN
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('Target ', target)
