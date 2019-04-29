@@ -1,6 +1,7 @@
 import platform
 import socket
 import sys
+import subprocess
 from pip._vendor.distlib.compat import raw_input
 
 """
@@ -43,6 +44,9 @@ if so == 'Windows':
 
     #Script by pythonforbeginners Custom for Gustavo Neri
 
+    subprocess.check_call(["cmd.exe", "netstat -o -n –a"])
+
+
     remoteServer = raw_input("Enter a remote host to scan or you Host-Ip: ")
     remoteServerIP = socket.gethostbyname(remoteServer)
 
@@ -78,6 +82,9 @@ if so == 'Windows':
         sys.exit()
 
     #Need optimized
+
+    #Initial Open Port Options
+
 
 elif so == 'Linux':
     print("SO: Linux")
