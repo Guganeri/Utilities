@@ -55,6 +55,32 @@ if so == 'Windows':
         #    print('Port', x, 'Closed')
     print('=-' * 50)
 
+    #Script Import
+
+    ip = myip
+
+    ports = []
+    count = 0
+
+    while count < 5:
+        ports.append(int(input("Type the port: ")))
+        count += 1
+
+    for port in ports:
+        client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        client.bind((ip, port))
+        msg = 'hi'
+        client.sendto(msg.encode(), (ip, port))
+        data, address = client.recvfrom(1024)
+        # print("Recebida ->", str(data))
+
+        if data != None:
+            print(str(port) + " -> Port is opened")
+        else:
+            print(str(port) + " -> Port is closed")
+
+    print("Scan Finished")
+
     #Verificação de portas em funcionamento
 
 elif so == 'Linux':
