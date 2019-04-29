@@ -1,7 +1,6 @@
 import platform
 import socket
 import sys
-import datetime
 from pip._vendor.distlib.compat import raw_input
 
 """
