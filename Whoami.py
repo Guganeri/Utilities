@@ -59,7 +59,12 @@ if so == 'Windows':
     # Notting work
     ip = myip
 
-    ports: int = 65000
+    ports = []
+    count = 0
+
+    while count < 5:
+        ports.append(int(input("Type the port: ")))
+        count += 1
 
     for port in ports:
         client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
