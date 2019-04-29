@@ -70,9 +70,9 @@ if so == 'Windows':
         # print("Recebida ->", str(data))
 
         if data != None:
-            print(str(port) + " -> Port is opened")
+            print(int(port) + " -> Port is opened")
         else:
-            print(str(port) + " -> Port is closed")
+            print(int(port) + " -> Port is closed")
 
     print("Scan Finished")
 
