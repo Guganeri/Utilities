@@ -62,8 +62,7 @@ if so == 'Windows':
     ports = []
     count = 0
 
-    while count < 5:
-        ports.append(int(input("Type the port: ")))
+    while count < 65000:
         count += 1
 
     for port in ports:
