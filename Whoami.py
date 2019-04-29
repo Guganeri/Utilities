@@ -58,7 +58,7 @@ if so == 'Windows':
     # We also put in some error handling for catching errors
 
     try:
-        for port in range(1, 500):
+        for port in range(1, 100):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex((remoteServerIP, port))
             if result == 0:
@@ -109,7 +109,7 @@ elif so == 'Linux':
     # We also put in some error handling for catching errors
 
     try:
-        for port in range(1, 500):
+        for port in range(1, 100):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex((remoteServerIP, port))
             if result == 0:
