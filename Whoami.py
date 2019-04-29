@@ -56,7 +56,7 @@ if so == 'Windows':
     print('=-' * 50)
 
     #Script Import
-
+    # Notting work
     ip = myip
 
     ports = []
