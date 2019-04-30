@@ -10,6 +10,7 @@ $culture.DateTimeFormat.ShortDatePattern = 'd/MM/yyyy'
 Set-Culture $culture
 Set-Culture 'pt-BR'
 $culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
+#$culture.DateTimeFormat.ShortDatePattern =
 
 #Configurações WinServer
 #Exibindo informações sobre locaidade
