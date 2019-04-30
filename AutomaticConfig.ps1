@@ -11,8 +11,11 @@ Set-Culture $culture
 Set-Culture 'pt-BR'
 $culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
 #$culture.DateTimeFormat.ShortDatePattern =
-#Configurações de idioma
+#Configuração de Lingaguem
 $currentlist = Get-WinUserLanguageList
+#Forçando o uso da linguagem
+Set-WinUserLanguageList pt-BR -Force
+
 $currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.LanguageTag -ne "pt-BR")){exit}}
 #Configurações WinServer
 #Exibindo informações sobre locaidade
