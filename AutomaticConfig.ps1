@@ -1,9 +1,13 @@
 ipmo international #import module internacional config
 
+
+#Configurações WinServer
 #Exibindo informações sobre locaidade
 Get-WinSystemLocale
 #Definindo região
-PS C:\>Set-WinSystemLocale -SystemLocale ja-JP
+Set-WinSystemLocale -SystemLocale pt-BR
+
+
 #Iniciando um serviço setando o caminho
 Start-Process -Filepath "C:\Program Files (x86) GoogleChromeApplicationchrome.exe"
 
