@@ -1,11 +1,14 @@
+import platform
+import socket
+import sys
+import subprocess
+from pip._vendor.distlib.compat import raw_input
+
 """
  [] Script for devops
- [] Verificação de portas em uso e abertura de portas via linha de comando
+ [] Checking ports in use and opening ports via command line
  [] Create by: Gustavo Neri
 """
-
-import platform, socket, sys
-
 print ('''
                                                                                        
 I8,        8        ,8I  88                                                        88  
@@ -19,14 +22,16 @@ I8,        8        ,8I  88                                                     
                                                      
 ''')
 
-#Verificação do SO
+#Verification SO
 so = platform.system()
 
-#Verificação do IP
+#Verification IP
 myip = socket.gethostbyname(socket.gethostname())
 
+#Starting Utility
 if so == 'Windows':
     print('=-' * 50)
+    print('\n')
     print("SO: Windows")
     print('HostName:', platform.node())
     #Arquiterura do processador
@@ -34,53 +39,54 @@ if so == 'Windows':
     print('Version:', platform.platform())
     print('Adictional Inf:', platform.win32_ver())
     print('Host-IP:', myip)
+    print('\n')
     print('=-' *50)
 
-    #Portas OPEN
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    target = myip
-    print('Target ', target)
+    #Script by pythonforbeginners Custom for Gustavo Neri
 
-    def pscan(port):
-        try:
-            s.connect((target, port))
-            return True
-        except:
-            return None
+    subprocess.check_call(["cmd.exe", "netstat -o -n –a"])
+    proc = subprocess.Popen("netstat -o -n –a", shell=True, stdout = subprocess.PIPE).stdout.read()
 
-    for x in range(0, 65536):
-        if pscan(x):
-            print('Port', x, 'is open')
-        #else:
-        #    print('Port', x, 'Closed')
-    print('=-' * 50)
 
-    #Script Import
-    # Notting work
-    ip = myip
 
-    ports = []
-    count = 0
+    remoteServer = raw_input("Enter a remote host to scan or you Host-Ip: ")
+    remoteServerIP = socket.gethostbyname(remoteServer)
 
-    while count < 65000:
-        count += 1
+    # Print a nice banner with information on which host we are about to scan
+    print("=-" * 50)
+    print("Please wait, scanning select host", remoteServerIP)
+    print("=-" * 50)
 
-    for port in ports:
-        client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        client.bind((ip, port))
-        msg = 'hi'
-        client.sendto(msg.encode(), (ip, port))
-        data, address = client.recvfrom(1024)
-        # print("Recebida ->", str(data))
+    # Check what time the scan started
 
-        if data != None:
-            print(str(port) + " -> Port is opened")
-        else:
-            print(str(port) + " -> Port is closed")
+    # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
 
-    print("Scan Finished")
+    # We also put in some error handling for catching errors
 
-    #Verificação de portas em funcionamento
+    try:
+        for port in range(1, 150):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            result = sock.connect_ex((remoteServerIP, port))
+            if result == 0:
+                print("Port {}: 	 Open".format(port))
+            sock.close()
+
+    except KeyboardInterrupt:
+        print("You pressed Ctrl+C")
+        sys.exit()
+
+    except socket.gaierror:
+        print('Hostname could not be resolved. Exiting')
+        sys.exit()
+
+    except socket.error:
+        print("Couldn't connect to server")
+        sys.exit()
+
+    #Need optimized
+
+    #Initial Open Port Options
+
 
 elif so == 'Linux':
     print("SO: Linux")
@@ -90,26 +96,48 @@ elif so == 'Linux':
     print('Version:', platform.platform())
     print('Adictional Inf: ', platform.linux_distribution())
 
-    # Portas OPEN
+    # Ports OPEN
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('Target ', target)
 
+    # Script by pythonforbeginners Custom for Gustavo Neri
 
-    def pscan(port):
-        try:
-            s.connect((target, port))
-            return True
-        except:
-            return None
+    remoteServer = raw_input("Enter a remote host to scan or you Host-Ip: ")
+    remoteServerIP = socket.gethostbyname(remoteServer)
 
+    # Print a nice banner with information on which host we are about to scan
+    print("=-" * 50)
+    print("Please wait, scanning select host", remoteServerIP)
+    print("=-" * 50)
 
-    for x in range(0, 65536):
-        if pscan(x):
-            print('Port', x, 'is open')
-        # else:
-        #    print('Port', x, 'Closed')
-    print('=-' * 50)
+    # Check what time the scan started
+
+    # Using the range function to specify ports (here it will scans all ports between 1 and 1024)
+
+    # We also put in some error handling for catching errors
+
+    try:
+        for port in range(1, 150):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            result = sock.connect_ex((remoteServerIP, port))
+            if result == 0:
+                print("Port {}: 	 Open".format(port))
+            sock.close()
+
+    except KeyboardInterrupt:
+        print("You pressed Ctrl+C")
+        sys.exit()
+
+    except socket.gaierror:
+        print('Hostname could not be resolved. Exiting')
+        sys.exit()
+
+    except socket.error:
+        print("Couldn't connect to server")
+        sys.exit()
+
+    # Need optimized
 
 else:
     print("Desconhecido")
