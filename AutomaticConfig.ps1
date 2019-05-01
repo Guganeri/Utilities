@@ -22,3 +22,4 @@ $currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.Language
 Get-WinSystemLocale #OK
 #Definindo região
 Set-WinSystemLocale -SystemLocale pt-BR
+shutdown /r
