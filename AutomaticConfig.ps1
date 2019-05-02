@@ -9,8 +9,26 @@ function Show-Menu {
 
     Write-Host "1 - Para criar usuário ADM"
     Write-Host "2 - Configurar Ambiente"
+    Write-Host "Q - Para Sair"
 }
-
+do{
+    Show-Menu
+    $input = Read-Host "Opcao: "
+    switch($input)
+    {
+        '1'{
+            cls
+            CriarUsuario
+        } '2'{
+            cls
+            ConfigurarAmbiente
+        }'q'{
+            return
+        }
+    }
+    Pause
+}until($input -eq 'q')
+function ConfigurarAmbiente {
 ################## DATA - HORA ##################
 ## Definindo Horario padrão como o de Brasilia
 tzutil /s "E. South America Standard Time"
@@ -34,7 +52,8 @@ Get-WinSystemLocale #OK
 #Definindo região
 Set-WinSystemLocale -SystemLocale pt-BR
 #Verificar as configura��es - Descomentar a linha
-#get-culture | Format-List -Property *
+#get-culture | Format-List -Property *    
+}
 function CriarUsuario {
         #Adicionar Usuario
         net user {usuario} {senhausuario} /passwordchg:yes /add
