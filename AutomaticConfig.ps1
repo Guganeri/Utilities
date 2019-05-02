@@ -6,7 +6,7 @@ tzutil /s "E. South America Standard Time"
 
 ## Definindo formato da data
 $culture = Get-Culture
-$culture.DateTimeFormat.ShortDatePattern = 'd/MM/yyyy'
+$culture.DateTimeFormat.ShortDatePattern = 'dd/MM/yyyy'
 Set-Culture $culture
 Set-Culture 'pt-BR'
 $culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
@@ -22,4 +22,7 @@ $currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.Language
 Get-WinSystemLocale #OK
 #Definindo regiÃ£o
 Set-WinSystemLocale -SystemLocale pt-BR
+#Verificar as configurações
+get-culture | Format-List -Property *
+#Reiniciar
 shutdown /r
