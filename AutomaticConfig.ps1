@@ -22,10 +22,12 @@ $currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.Language
 Get-WinSystemLocale #OK
 #Definindo regiÃ£o
 Set-WinSystemLocale -SystemLocale pt-BR
-#Verificar as configurações - Descomentar a linha
+#Verificar as configuraï¿½ï¿½es - Descomentar a linha
 #get-culture | Format-List -Property *
 #Adicionar Usuario
-net user usuario senhausuario /passwordchg:yes /add
+net user {usuario} {senhausuario} /passwordchg:yes /add
+#PermissÃ£o de Administrador
+net localgroup administrators {usuario} /add
 
 #Reiniciar
 shutdown /r
