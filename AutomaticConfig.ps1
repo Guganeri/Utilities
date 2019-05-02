@@ -7,7 +7,7 @@ function Show-Menu {
     cls
     Write-Host "=========================$Title========================="
 
-    Write-Host "1 - Para criar usuário"
+    Write-Host "1 - Para criar usuário ADM"
     Write-Host "2 - Configurar Ambiente"
 }
 do
