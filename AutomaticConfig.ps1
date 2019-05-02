@@ -1,33 +1,48 @@
 Import-Module International
 
-################## DATA - HORA ##################
-## Definindo Horario padrão como o de Brasilia
-tzutil /s "E. South America Standard Time"
+function Show-Menu {
+    param (
+        [String]$Title='Meu Menu'
+    )
+    cls
+    Write-Host "=========================$Title========================="
 
-## Definindo formato da data
-$culture = Get-Culture
-$culture.DateTimeFormat.ShortDatePattern = 'dd/MM/yyyy'
-Set-Culture $culture
-Set-Culture 'pt-BR'
-$culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
-#$culture.DateTimeFormat.ShortDatePattern =
-#Configuração de Lingaguem
-$currentlist = Get-WinUserLanguageList
-#Forçando o uso da linguagem
-Set-WinUserLanguageList pt-BR -Force
+    Write-Host "1 - Para criar usuário"
+    Write-Host "2 - Configurar Ambiente"
+}
+do
+{
+    ################## DATA - HORA ##################
+    ## Definindo Horario padrão como o de Brasilia
+    tzutil /s "E. South America Standard Time"
+    ## Definindo formato da data
+    $culture = Get-Culture
+    $culture.DateTimeFormat.ShortDatePattern = 'dd/MM/yyyy'
+    Set-Culture $culture
+    Set-Culture 'pt-BR'
+    $culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
+    #$culture.DateTimeFormat.ShortDatePattern =
 
-$currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.LanguageTag -ne "pt-BR")){exit}}
-#Configurações WinServer
-#Exibindo informações sobre locaidade
-Get-WinSystemLocale #OK
-#Definindo região
-Set-WinSystemLocale -SystemLocale pt-BR
-#Verificar as configura��es - Descomentar a linha
-#get-culture | Format-List -Property *
-#Adicionar Usuario
-net user {usuario} {senhausuario} /passwordchg:yes /add
-#Permissão de Administrador
-net localgroup administrators {usuario} /add
+    #Configuração de Lingaguem
+    $currentlist = Get-WinUserLanguageList
+    #Forçando o uso da linguagem
+    Set-WinUserLanguageList pt-BR -Force
+    $currentlist | ForEach-Object {if(($_.LanguageTag -ne "pt-BR") -and ($_.LanguageTag -ne "pt-BR")){exit}}
 
-#Reiniciar
-shutdown /r
+    #Configurações WinServer
+    #Exibindo informações sobre locaidade
+    Get-WinSystemLocale #OK
+    #Definindo região
+    Set-WinSystemLocale -SystemLocale pt-BR
+    #Verificar as configura��es - Descomentar a linha
+    #get-culture | Format-List -Property *
+    function CriarUsuario {
+        #Adicionar Usuario
+        net user {usuario} {senhausuario} /passwordchg:yes /add
+        #Permissão de Administrador
+        net localgroup administrators {usuario} /add
+
+        #Reiniciar
+        shutdown /r        
+    }
+}until($input -eq 'q')
