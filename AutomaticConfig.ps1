@@ -25,7 +25,7 @@ Set-WinSystemLocale -SystemLocale pt-BR
 #Verificar as configurações - Descomentar a linha
 #get-culture | Format-List -Property *
 #Adicionar Usuario
-net user cdtlab01 cdt@1234 /passwordchg:yes /add
+net user usuario senhausuario /passwordchg:yes /add
 
 #Reiniciar
 shutdown /r
