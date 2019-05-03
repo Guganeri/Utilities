@@ -39,7 +39,7 @@ do {
             Get-WinSystemLocale #OK
             #Definindo região
             Set-WinSystemLocale -SystemLocale pt-BR
-            #Verificar as configura��es - Descomentar a linha
+            #Verificar as configuracoes - Descomentar a linha
             #get-culture | Format-List -Property *   
             
         } '2' {
