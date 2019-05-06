@@ -42,12 +42,8 @@ if so == 'Windows':
     print('\n')
     print('=-' *50)
 
-    #Script by pythonforbeginners Custom for Gustavo Neri
-
     subprocess.check_call(["cmd.exe", "netstat -o -n –a"])
     proc = subprocess.Popen("netstat -o -n –a", shell=True, stdout = subprocess.PIPE).stdout.read()
-
-
 
     remoteServer = raw_input("Enter a remote host to scan or you Host-Ip: ")
     remoteServerIP = socket.gethostbyname(remoteServer)
@@ -100,8 +96,6 @@ elif so == 'Linux':
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     target = myip
     print('Target ', target)
-
-    # Script by pythonforbeginners Custom for Gustavo Neri
 
     remoteServer = raw_input("Enter a remote host to scan or you Host-Ip: ")
     remoteServerIP = socket.gethostbyname(remoteServer)
