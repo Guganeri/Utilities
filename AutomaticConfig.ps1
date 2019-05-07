@@ -11,6 +11,8 @@ function Show-Menu {
     Write-Host "1 - Configurar Ambiente"
     Write-Host "2 - Para criar usuario ADM"
     Write-Host "Q - Para Sair"
+
+    Write-Host "========================= XxXxX ========================="
 }
 do {
     Show-Menu
@@ -29,14 +31,15 @@ do {
             $culture.DateTimeFormat.ShortTimePattern = 'HH:mm'
             #$culture.DateTimeFormat.ShortDatePattern =
 
+            ################## Linguagem ##################
             #Configuração de Lingaguem
             $currentlist = Get-WinUserLanguageList
             #Forçando o uso da linguagem
             Set-WinUserLanguageList pt-BR -Force                        
             Set-WinUILanguageOverride pt-BR
-            Set-WinAcceptLanguageFromLanguageListOptOut pt-BR
-            Set-WinCultureFromLanguageListOptOut pt-BR            
-            Set-WinLanguageBarOption pt-BR
+            Set-WinAcceptLanguageFromLanguageListOptOut -OptOut $True
+            Set-WinCultureFromLanguageListOptOut -OptOut $True             
+            Set-WinLanguageBarOption -UseLegacySwitchMode -UseLegacyLanguageBar 
             $currentlist | ForEach-Object { if (($_.LanguageTag -ne "pt-BR") -and ($_.LanguageTag -ne "pt-BR")) { exit } }
 
             #Configurações WinServer
