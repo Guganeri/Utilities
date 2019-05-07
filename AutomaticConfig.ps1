@@ -34,6 +34,7 @@ do {
             #Forçando o uso da linguagem
             Set-WinUserLanguageList pt-BR -Force
             Set-WinUserLanguageList pt-BR
+            Set-WinUILanguageOverride pt-BR
             $currentlist | ForEach-Object { if (($_.LanguageTag -ne "pt-BR") -and ($_.LanguageTag -ne "pt-BR")) { exit } }
 
             #Configurações WinServer
