@@ -1,4 +1,4 @@
-######## Download de pt-BR Teste via powershell ############
+############ Download de pt-BR Teste via powershell ############
 $url = "https://www.microsoft.com/pt-br/download/confirmation.aspx?id=9490"
 $output = "C:\Users\"
 $start_time = Get-Date
