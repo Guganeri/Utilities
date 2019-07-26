@@ -5,13 +5,14 @@ import os
 verification = 3600
 
 while True:
-    print (f ,' Ultima verificação em: {datetime.now()}')
+    print(datetime.now())
     sleep(verification)
     try:
         os.mkdir('Teste0001')
         print('Diretorio criado com sucesso')
     except OSError:
-        print('Diretorio não criado')
+        print(OSError   )
+
     print(os.listdir(os.getcwd()))
     os.removedirs("Teste0001")
     print(os.listdir(os.getcwd()))
