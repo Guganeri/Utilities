@@ -15,6 +15,10 @@ while True:
 
     #print(os.listdir(os.getcwd()))
     try:
+        for raiz, diretorios, arquivos in os.walk('/'):
+            for arquivos in arquivos:
+                if arquivos.endswith('.log'):
+                    os.remove(os.path.join(raiz.arquivo))
         os.removedirs("Teste0001")
         print('Diretorio removido com sucesso !!! ')
     except OSError:
