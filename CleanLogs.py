@@ -2,8 +2,8 @@ from time import sleep
 from datetime import datetime
 import os
 
-#verification = 3600
-verification = 60
+verification = 3600
+#vierification = 60
 while True:
     print(datetime.now())
     sleep(verification)
