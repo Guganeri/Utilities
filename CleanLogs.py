@@ -2,8 +2,8 @@ from time import sleep
 from datetime import datetime
 import os
 
-verification = 3600
-#vierification = 60
+#verification = 3600
+verification = 60
 while True:
     print(datetime.now())
     sleep(verification)
@@ -18,7 +18,7 @@ while True:
         for raiz, diretorios, arquivos in os.walk('/'):
             for arquivos in arquivos:
                 if arquivos.endswith('.log'):
-                    os.remove(os.path.join(raiz.arquivo))
+                    os.remove(os.path.join(raiz, arquivos))
         os.removedirs("Teste0001")
         print('Diretorio removido com sucesso !!! ')
     except OSError:
