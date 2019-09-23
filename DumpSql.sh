@@ -52,12 +52,12 @@ dump()
 {
     # Update below values
     TODAY=`date +"%d%b%Y"`
-    shell> mysqldump -u <usuario> -p<senha> mysql user > mysqluser.sql
+    #mysqldump -u [USERNAME] -p[PASSWORD] [DATABASE-NAME] > [NOMEdoDUMP{$TODAY}].sql
     DB_BACKUP_PATH='/backup/dbbackup'
     MYSQL_HOST='localhost'
     MYSQL_PORT='3306'
     MYSQL_USER='root'
-    MYSQL_PASSWORD='mysecret'
+    MYSQL_PASSWORD='root'
     DATABASE_NAME='mydb'
     BACKUP_RETAIN_DAYS=30   ## Number of days to keep local backup copy
 
