@@ -1,33 +1,47 @@
 #!/usr/bin/env python
 import os
+import shutil
 from datetime import date
-import logging
 
-self.homeDir = "C:/Users/gustavo.neri/Desktop/teste/"
-self.logFIle=join(self.homeDir, "CleanUp/CleanUp.log")
-loggger_handler = logging.FileHandler(self.logFIle, mode='a')
-logger_formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-loggger_handler.setFormatter(logger_formatter)
-self.logger.addHandler(loggger_handler)
-self.logger.info(_('Logger OK'))
-
-pasta = "C:/Users/gustavo.neri/Desktop/teste/teste/"
+path = "C:/"
 arquivo = str('')
-diretorio = os.listdir(pasta)
-print("Listando Arquivos: ", os.listdir(pasta))
-self.logger.info(msgIq1)
-for arquivo in diretorio:
-    if arquivo in diretorio:
-        if arquivo != "certificados" and arquivo != "teste01":
-            print('---removendo arquivo----')
-            self.logger.info(msgIq1)
-            os.remove('{}/{}'.format(pasta, arquivo))
-            self.logger.info(msgIq1)
-            print('%s removido da pasta %s' % (pasta, arquivo))
-            self.logger.info(msgIq1)
-    else:
-        print('este arquivo nao existe')
+diretorio = os.listdir(path)
+datahoje = date.today()
 
-log_file = path.join(path.dirname(path.realpath(__file__)), f"{date.today()}.txt")
+arquivo_log = open('logsCleanUp.txt', 'a')
+log_text = ''
+logs = (f"\nROTINA Iniciada {datahoje}\n")
+logs = str(logs)
+arquivo_log.write(logs)
+lista = (f"Lista de Diretorios:{os.listdir(path)}\n")
+lista = str(lista)
+arquivo_log.write(lista)
 
-### SGR CLEANUP TESTE ###
+for caminho, pastas, arquivos in os.walk(path):
+    for pasta in pastas[:]:
+        if pasta in pastas != 'qqcoisa':
+            try:
+                if pasta != "certificados" and pasta != "plugins-empacotados":
+                    rmlog = f"removendo diretorio ->{pasta} localizada em:{caminho} \n"
+                    rmlog = str(rmlog)
+                    arquivo_log.write(rmlog)
+                    shutil.rmtree(os.path.join(caminho, pasta))
+                else:
+                    continue
+            except ValueError:
+                continue
+        else:
+            continue
+
+#for arquivo in diretorio:
+#    if arquivo in diretorio:
+#        if arquivo != 'logs':
+#            print('---removendo arquivo----')
+#            os.remove('{}/{}'.format(pasta, arquivo))
+#            removendo = ("%s removido da pasta %s \n" % (pasta, arquivo))
+#            removendo = str(removendo)
+#            arquivo_log.write(removendo)
+#            print(removendo)
+#        else:
+#            continue
+arquivo_log.close()
